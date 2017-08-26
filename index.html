@@ -4,31 +4,13 @@
 <head>
   <meta charset="utf-8">
   <title>Quick demo</title>
-  <script src="https://www.gstatic.com/firebasejs/4.3.0/firebase.js"></script>
+
 
   <pre id="my_obj"></pre>
 </head>
 <body>
-
-
-
-  <script>
-    // Initialize Firebase
-    var config = {
-      apiKey: "AIzaSyDnL_Q28S278fyMs_WcvBEMsxn-7DITkTw",
-      authDomain: "list-go-22a0a.firebaseapp.com",
-      databaseURL: "https://list-go-22a0a.firebaseio.com",
-      projectId: "list-go-22a0a",
-      storageBucket: "",
-      messagingSenderId: "44651498422"
-    };
-    firebase.initializeApp(config);
-
-    var my_obj = getElementById('my_obj');
-    const ref = firebase.database().ref().child('my_obj');
-    ref.on('value', snap => console.log(snap.val()));
-
-  </script>
+  <script src="https://www.gstatic.com/firebasejs/4.3.0/firebase.js"></script>
+  <script src="app.js"> </script>
 </body>
 </html>
 
