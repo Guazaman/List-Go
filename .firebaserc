@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "list-go-22a0a"
+    "default": "list-go-22a0a",
+    "master": "list-go-22a0a"
   }
 }
