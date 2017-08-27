@@ -34,7 +34,7 @@ function saveTraveler() {
 
     //var travel_code = baseRef.equalTo(travel_code);
 
-    var trip_ref = baseRef.child(travel_code).child("userList");
+    var trip_ref = baseRef.child(travel_code).child('userList');
     trip_ref.update({
         tripUser: traveler_name
     });
@@ -42,4 +42,19 @@ function saveTraveler() {
 
 function nukeDB(){
     baseRef.remove();
+}
+
+function createTable() {
+    baseRef
+}
+
+function createUser() {
+    var email = document.getElementById('email');
+    var pasword = document.getElementById('password');
+    firebase.auth().createUserWithEmailAndPassword(string(email), string(password)).catch(function(error) {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+});
+    // body...
 }
