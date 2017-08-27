@@ -29,7 +29,11 @@ function saveAdmin() {
 }
 
 function saveTraveler() {
+<<<<<<< Updated upstream
     var traveler_name = 'migue'; //document.getElementById("traveler_name").value;
+=======
+    var traveler_name = 'Miguel'; //document.getElementById("traveler_name").value;
+>>>>>>> Stashed changes
     var travel_code =  'HackMTY2017';//document.getElementById("travel_code").value;
 
     var code_trip = baseRef.equalTo(travel_code);
@@ -45,8 +49,28 @@ function nukeDB(){
 }
 
 function createTable() {
+<<<<<<< Updated upstream
  //Miguel shit
+=======
+  var id_trip = 'HackMTY2017';//document.getElementById("traveler_name").value;
+  return firebase.database().ref('/' + id_trip + '/' + '/userList/').once('value').then(function(snapshot) {
+    var tripUsers = snapshot.val();
+    var users = Object.keys(tripUsers);
+    var table = document.getElementById("userTable");
+    table.innerHTML = table.innerHTML +
+          '<th>' + "name" + '</th>' +
+          '<th>' + "Here!" + "</th>";
+    users.forEach(function(user, index){
+      table.innerHTML = table.innerHTML +
+          '<th>' + user  + '</th>' +
+          '<th>' + '<input type="checkbox" />' + '</th>';
+      console.log(user);
+    });
+
+  });
+>>>>>>> Stashed changes
 }
+
 
 function createUser() {
     var email = document.getElementById('email').value.toString().trim();
