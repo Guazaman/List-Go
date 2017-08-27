@@ -52,8 +52,8 @@ function createTable() {
     var users = Object.keys(tripUsers);
     var table = document.getElementById("userTable");
     table.innerHTML = table.innerHTML +
-          '<th>' + "name" + '</th>' +
-          '<th>' + "Here!" + "</th>";
+          '<th>' + "User Name" + '</th>' + '<br>' +
+          '<th>' + "I am ready!" + "</th>";
     users.forEach(function(user, index){
       table.innerHTML = table.innerHTML +
           '<th>' + user  + '</th>' +
