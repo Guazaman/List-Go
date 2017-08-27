@@ -29,12 +29,12 @@ function saveAdmin() {
 }
 
 function saveTraveler() {
-    var traveler_name = 'Eric'; //document.getElementById("traveler_name").value;
+    var traveler_name = 'migue'; //document.getElementById("traveler_name").value;
     var travel_code =  'HackMTY2017';//document.getElementById("travel_code").value;
 
-    //var travel_code = baseRef.equalTo(travel_code);
+    var code_trip = baseRef.equalTo(travel_code);
 
-    var trip_ref = baseRef.child(travel_code).child('userList');
+    var trip_ref = baseRef.child(travel_code).child("userList").child(traveler_name);
     trip_ref.update({
         tripUser: traveler_name
     });
@@ -45,16 +45,29 @@ function nukeDB(){
 }
 
 function createTable() {
-    baseRef
+ //Miguel shit
 }
 
 function createUser() {
-    var email = document.getElementById('email');
-    var pasword = document.getElementById('password');
-    firebase.auth().createUserWithEmailAndPassword(string(email), string(password)).catch(function(error) {
+    var email = document.getElementById('email').value.toString().trim();
+    var pasword = document.getElementById('password').value;
+    firebase.auth().createUserWithEmailAndPassword(email, String(password))
+    .then(function(success){
+        console.log(success, 'SUCCESS');
+        return success;
+    }, function(error) {
         // Handle Errors here.
         var errorCode = error.code;
         var errorMessage = error.message;
-});
-    // body...
+        console.log(errorMessage,'ERROR');
+        return errorMessage;
+    });
 }
+
+firebase.auth().onAuthStateChanged(function(user) {
+  if (user) {
+    console.log(user, 'user heerrre');
+  } else {
+    console.log('no fucking users');
+  }
+});
