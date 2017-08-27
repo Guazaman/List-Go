@@ -16,9 +16,10 @@ var baseRef = firebase.database().ref()
 
 
 function saveAdmin() {
-    var leader_name = 'Mike';//document.getElementById("admin_name").value;
-    var tripName = 'hackaton';//document.getElementById("event_name").value;
-    var travel_code = 'HackMTY2017';//document.getElementById("trip_code").value;
+    var leader_name = document.getElementById("admin_name").value;
+    var tripName = document.getElementById("event_name").value;
+    var travel_code = document.getElementById("trip_code").value;
+
 
     var another_child = baseRef.child(travel_code);
         another_child.update({
@@ -29,12 +30,8 @@ function saveAdmin() {
 }
 
 function saveTraveler() {
-<<<<<<< Updated upstream
-    var traveler_name = 'migue'; //document.getElementById("traveler_name").value;
-=======
-    var traveler_name = 'Miguel'; //document.getElementById("traveler_name").value;
->>>>>>> Stashed changes
-    var travel_code =  'HackMTY2017';//document.getElementById("travel_code").value;
+    var traveler_name = document.getElementById("traveler_name").value;
+    var travel_code =  document.getElementById("travel_code").value;
 
     var code_trip = baseRef.equalTo(travel_code);
 
@@ -49,10 +46,7 @@ function nukeDB(){
 }
 
 function createTable() {
-<<<<<<< Updated upstream
- //Miguel shit
-=======
-  var id_trip = 'HackMTY2017';//document.getElementById("traveler_name").value;
+  var id_trip = 'HACKMTY2017';
   return firebase.database().ref('/' + id_trip + '/' + '/userList/').once('value').then(function(snapshot) {
     var tripUsers = snapshot.val();
     var users = Object.keys(tripUsers);
@@ -68,7 +62,6 @@ function createTable() {
     });
 
   });
->>>>>>> Stashed changes
 }
 
 

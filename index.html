@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-<<<<<<< Updated upstream
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
@@ -13,6 +12,8 @@
     <link rel="stylesheet" href="css/my-app.css">
   </head>
   <body>
+    <script src="https://www.gstatic.com/firebasejs/4.3.0/firebase.js"></script>
+    <script src="app.js">  </script>
     <!-- Status bar overlay for fullscreen mode-->
     <div class="statusbar-overlay"></div>
     <!-- Panels overlay-->
@@ -66,7 +67,7 @@
                           <div class="item-inner">
                             <div class="item-title label">Leader Name</div>
                             <div class="item-input">
-                              <input type="text" name="text" placeholder="Name and Last name"/>
+                              <input type="text" id="admin_name" placeholder="Name and Last name"/>
                             </div>
                           </div>
                         </li>
@@ -74,7 +75,7 @@
                           <div class="item-inner">
                             <div class="item-title label">Trip Name</div>
                             <div class="item-input">
-                              <input type="text" name="text" placeholder="Your trip name"/>
+                              <input type="text" id="event_name" placeholder="Your trip name"/>
                             </div>
                           </div>
                         </li>
@@ -82,15 +83,16 @@
                           <div class="item-inner">
                             <div class="item-title label">Trip Code</div>
                             <div class="item-input">
-                              <input type="text" name="text" placeholder="Code"/>
+                              <input type="text" id="trip_code" placeholder="Code"/>
+                            </div>
+                            <div id ="boton">
+                              <button onclick="saveAdmin()" type="submit" class="button form-to-data">SUBMIT</button>
                             </div>
                           </div>
                         </li>
                       </ul>
                     </div>
-                    <div id ="boton">
-                      <button type="submit" class="button form-to-data">Travel&Go</button>
-                    </div>
+
                   </form>
                 </div>
               </div>
@@ -112,7 +114,7 @@
                           <div class="item-inner">
                             <div class="item-title label">Traveler Name</div>
                             <div class="item-input">
-                              <input type="text" name="text" placeholder="Name and Last name"/>
+                              <input type="text" id="traveler_name" placeholder="Name and Last name"/>
                             </div>
                           </div>
                         </li>
@@ -120,22 +122,14 @@
                           <div class="item-inner">
                             <div class="item-title label">Travel Code</div>
                             <div class="item-input">
-                              <input type="text" name="text" placeholder="Travel Code"/>
+                              <input type="text" id="travel_code" placeholder="Travel Code"/>
                             </div>
                           </div>
                         </li>
-                        <li class="item-content">
-                          <div class="item-inner">
-                            <div class="item-title label">Trip Code</div>
-                            <div class="item-input">
-                              <input type="text" name="text" placeholder="Code"/>
-                            </div>
+                          <div id ="boton">
+                            <button onclick="saveTraveler()" type="submit" class="button form-to-data">SUBMIT</button>
                           </div>
-                        </li>
                       </ul>
-                    </div>
-                    <div id ="boton">
-                      <button type="submit" class="button form-to-data">Travel&Go</button>
                     </div>
                   </form>
                 </div>
@@ -158,7 +152,7 @@
                   <li>
                     <div class="item-content">
                       <div class="item-media"><i class="icon icon-form-name"></i></div>
-                      <div class="item-inner"> 
+                      <div class="item-inner">
                         <div class="item-title label">Name</div>
                         <div class="item-input">
                           <input type="text" placeholder="Your name">
@@ -169,7 +163,7 @@
                   <li>
                     <div class="item-content">
                       <div class="item-media"><i class="icon icon-form-email"></i></div>
-                      <div class="item-inner"> 
+                      <div class="item-inner">
                         <div class="item-title label">E-mail</div>
                         <div class="item-input">
                           <input type="email" placeholder="E-mail">
@@ -180,7 +174,7 @@
                   <li>
                     <div class="item-content">
                       <div class="item-media"><i class="icon icon-form-url"></i></div>
-                      <div class="item-inner"> 
+                      <div class="item-inner">
                         <div class="item-title label">URL</div>
                         <div class="item-input">
                           <input type="url" placeholder="URL">
@@ -191,7 +185,7 @@
                   <li>
                     <div class="item-content">
                       <div class="item-media"><i class="icon icon-form-password"></i></div>
-                      <div class="item-inner"> 
+                      <div class="item-inner">
                         <div class="item-title label">Password</div>
                         <div class="item-input">
                           <input type="password" placeholder="Password">
@@ -202,7 +196,7 @@
                   <li>
                     <div class="item-content">
                       <div class="item-media"><i class="icon icon-form-tel"></i></div>
-                      <div class="item-inner"> 
+                      <div class="item-inner">
                         <div class="item-title label">Phone</div>
                         <div class="item-input">
                           <input type="tel" placeholder="Phone">
@@ -213,7 +207,7 @@
                   <li>
                     <div class="item-content">
                       <div class="item-media"><i class="icon icon-form-gender"></i></div>
-                      <div class="item-inner"> 
+                      <div class="item-inner">
                         <div class="item-title label">Gender</div>
                         <div class="item-input">
                           <select>
@@ -227,7 +221,7 @@
                   <li>
                     <div class="item-content">
                       <div class="item-media"><i class="icon icon-form-calendar"></i></div>
-                      <div class="item-inner"> 
+                      <div class="item-inner">
                         <div class="item-title label">Birth date</div>
                         <div class="item-input">
                           <input type="date" placeholder="Birth day" value="2014-04-30">
@@ -238,7 +232,7 @@
                   <li>
                     <div class="item-content">
                       <div class="item-media"><i class="icon icon-form-toggle"></i></div>
-                      <div class="item-inner"> 
+                      <div class="item-inner">
                         <div class="item-title label">Switch</div>
                         <div class="item-input">
                           <label class="label-switch">
@@ -276,17 +270,14 @@
         <div class="pages">
           <div data-page="index-3" class="page">
             <div class="page-content">
-              <div class="content-block-title">Another plain static view</div>
+              <button onclick="createTable()"> Generate user table </button>
+              <table id='userTable'></table>
               <div class="content-block">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vel commodo massa, eu adipiscing mi. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Phasellus ultricies dictum neque, non varius tortor fermentum at. Curabitur auctor cursus imperdiet. Nam molestie nisi nec est lacinia volutpat in a purus. Maecenas consectetur condimentum viverra. Donec ultricies nec sem vel condimentum. Phasellus eu tincidunt enim, sit amet convallis orci. Vestibulum quis fringilla dolor.    </p>
-                <p>Mauris commodo lacus at nisl lacinia, nec facilisis erat rhoncus. Sed eget pharetra nunc. Aenean vitae vehicula massa, sed sagittis ante. Quisque luctus nec velit dictum convallis. Nulla facilisi. Ut sed erat nisi. Donec non dolor massa. Mauris malesuada dolor velit, in suscipit leo consectetur vitae. Duis tempus ligula non eros pretium condimentum. Cras sed dolor odio.</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vel commodo massa, eu adipiscing mi. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Phasellus ultricies dictum neque, non varius tortor fermentum at. Curabitur auctor cursus imperdiet. Nam molestie nisi nec est lacinia volutpat in a purus. Maecenas consectetur condimentum viverra. Donec ultricies nec sem vel condimentum. Phasellus eu tincidunt enim, sit amet convallis orci. Vestibulum quis fringilla dolor.    </p>
               </div>
             </div>
           </div>
         </div>
       </div>
-
       <!-- Bottom Tabbar-->
       <div class="toolbar tabbar tabbar-labels">
         <div class="toolbar-inner"><a href="#view-1" class="tab-link active"><i class="icon f7-icons">home</i><span class="tabbar-label">Home</span></a><a href="#view-2" class="tab-link"><i class="icon tabbar-demo-icon-2"></i><span class="tabbar-label">Travel Leader</span></a><a href="#view-3" class="tab-link"> <i class="icon tabbar-demo-icon-3"><span class="badge bg-red">4</span></i><span class="tabbar-label">Traveler</span></a><a href="#view-4" class="tab-link"> <i class="icon tabbar-demo-icon-4"></i><span class="tabbar-label">Traveler Status</span></a><a href="#view-5" class="tab-link active"> <i class="icon tabbar-demo-icon-5"></i><span class="tabbar-label">Status Report</span></a></div>
@@ -298,7 +289,9 @@
     <script type="text/javascript" src="js/my-app.js"></script>
   </body>
 </html>
-=======
+
+<!--
+
 <head>
   <meta charset="utf-8">
   <title>Quick demo</title>
@@ -326,11 +319,11 @@
   </div>
   <div>
     <table id="userTable">
-      algo wey
 
 
     </table>
   </div>
 </body>
 </html>
->>>>>>> Stashed changes
+
+ -->
